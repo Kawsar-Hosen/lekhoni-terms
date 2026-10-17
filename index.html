@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lekhoni Kahini - Terms & Policies</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#fafafa;color:#333;line-height:1.6}
+.container{max-width:700px;margin:0 auto;padding:20px 16px}
+.lang-bar{display:flex;gap:8px;justify-content:center;margin-bottom:24px}
+.lang-btn{padding:6px 16px;border-radius:8px;border:1px solid #ddd;cursor:pointer;font-size:13px;font-weight:600;background:#fff;color:#333;transition:all .2s}
+.lang-btn.active{background:#10B981;color:#fff;border-color:#10B981}
+.hero{text-align:center;padding:32px 16px;background:linear-gradient(135deg,#10B981,#059669);border-radius:16px;color:#fff;margin-bottom:32px}
+.hero h1{font-size:24px;margin:0}
+.hero p{opacity:.85;font-size:14px;margin:8px 0 0}
+.hero .icon{font-size:48px;margin-bottom:8px}
+.section{background:#fff;border-radius:12px;padding:20px;margin-bottom:16px;border:1px solid #eee}
+.section h2{font-size:18px;margin:0 0 16px;display:flex;align-items:center;gap:8px}
+.section p{font-size:14px;line-height:1.7;color:#444;margin:0 0 10px}
+.section.terms h2{color:#10B981}
+.section.privacy h2{color:#3B82F6}
+.section.content h2{color:#8B5CF6}
+.section.contact h2{color:#F59E0B}
+.footer{text-align:center;padding:16px 0;color:#999;font-size:12px}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="lang-bar">
+<button class="lang-btn active" onclick="setLang('bn')">বাংলা</button>
+<button class="lang-btn" onclick="setLang('en')">English</button>
+<button class="lang-btn" onclick="setLang('hi')">हिन्दी</button>
+</div>
+<div class="hero">
+<div class="icon">📖</div>
+<h1 id="title">Lekhoni Kahini</h1>
+<p id="subtitle">বাংলা সাহিত্য ও উপন্যাসের এক অনন্য পাঠভুবন</p>
+</div>
+<div class="section terms">
+<h2>📜 <span id="terms-title">সেবার শর্তাবলী</span></h2>
+<div id="terms-body"></div>
+</div>
+<div class="section privacy">
+<h2>🔒 <span id="privacy-title">গোপনীয়তা নীতি</span></h2>
+<div id="privacy-body"></div>
+</div>
+<div class="section content">
+<h2>📝 <span id="content-title">কন্টেন্ট নীতি</span></h2>
+<div id="content-body"></div>
+</div>
+<div class="section contact">
+<h2>✉️ <span id="contact-title">যোগাযোগ</span></h2>
+<p id="contact-body">ইমেইল: lekhoni-kahini@xyteee.com | আমরা ৪৮ ঘণ্টার মধ্যে উত্তর দিই।</p>
+</div>
+<div class="footer">
+<p>© 2026 Lekhoni Kahini. All rights reserved.</p>
+<p>Last updated: 2026-08-30</p>
+</div>
+</div>
+<script>
+const D={
+bn:{title:'Lekhoni Kahini',subtitle:'বাংলা সাহিত্য ও উপন্যাসের এক অনন্য পাঠভুবন',termsT:'সেবার শর্তাবলী',privacyT:'গোপনীয়তা নীতি',contentT:'কন্টেন্ট নীতি',contactT:'যোগাযোগ',terms:['লেখনী কাহিনিতে স্বাগতম। এই অ্যাপ ব্যবহার করে আপনি নিম্নলিখিত শর্তাবলী মেনে নিচ্ছেন।','এই অ্যাপ ব্যবহার করতে আপনার বয়স কমপক্ষে ১৩ বছর হতে হবে। লেখনী কাহিনি ব্যবহার করে আপনি এই সেবার শর্তাবলী গ্রহণ করছেন।','আপনি যে গল্প লেখেন তার মালিকানা আপনারই থাকবে। আমাদের প্ল্যাটফর্মে প্রকাশ করে আপনি আমাদের একটি নন-একচেলিভ লাইসেন্স দিচ্ছেন।','আপনি ক্ষতিকর, অপমানজনক, প্লেজিয়ারাইজড বা বেআইনি কন্টেন্ট পোস্ট করবেন না। আমরা এই শর্ত লঙ্ঘনকারী কন্টেন্ট সরিয়ে ফেলার অধিকার রাখি।','শর্ত লঙ্ঘনে আমরা আপনার অ্যাকাউন্ট সাসপেন্ড বা টার্মিনেট করতে পারি। আপনি যেকোনো সময় অ্যাপ সেটিংস থেকে আপনার অ্যাকাউন্ট মুছে ফেলতে পারবেন।'],privacy:['আপনার গোপনীয়তা আমাদের কাছে গুরুত্বপূর্ণ। এই নীতিতে ব্যাখ্যা করা হয়েছে আমরা কী ডেটা সংগ্রহ করি এবং কীভাবে ব্যবহার করি।','আমরা সংগ্রহ করি: আপনার নাম/ইমেইল (অ্যাকাউন্টের জন্য), পাঠ ইতিহাস (সুপারিশের জন্য), ডিভাইস তথ্য (অ্যাপ পারফরম্যান্সের জন্য)।','আমরা আপনার ডেটা অ্যাপ প্রদান ও উন্নত করতে, আপনার অভিজ্ঞতা ব্যক্তিগতকরণ করতে এবং আপডেট সম্পর্কে যোগাযোগ করতে ব্যবহার করি।','আমরা আপনার ব্যক্তিগত ডেটা বিক্রি করি না। আমরা অ্যানানিমাইজড, এগ্রিগেটেড ডেটা অ্যানালিটিক্স পার্টনারদের সাথে শেয়ার করতে পারি।','আমরা আপনার ব্যক্তিগত তথ্য রক্ষা করতে শিল্প-মানের নিরাপত্তা ব্যবস্থা প্রয়োগ করি।','আমরা এই নীতি আপডেট করতে পারি। গুরুত্বপূর্ণ পরিবর্তনগুলো অ্যাপের মাধ্যমে জানানো হবে।'],content:['লেখনী কাহিনি বাংলা সাহিত্যের একটি প্ল্যাটফর্ম। আমরা একটি নিরাপদ অভিজ্ঞতা নিশ্চিত করতে কন্টেন্ট মানদণ্ড বজায় রাখি।','লেখকরা তাদের মূল রচনার সম্পূর্ণ মালিকানা রাখেন। প্লেজিয়ারিজম সম্পূর্ণ নিষিদ্ধ।','সমস্ত প্রকাশিত কন্টেন্ট আমাদের দল দ্বারা পর্যালোচিত হয়। আমরা নির্দেশিকা লঙ্ঘনকারী কন্টেন্ট সরিয়ে ফেলার অধিকার রাখি।','ব্যবহারকারীরা অনুপযুক্ত কন্টেন্ট রিপোর্ট করতে পারেন। আমরা ২৪ ঘণ্টার মধ্যে রিপোর্ট পর্যালোচনা করি।','যোগ্য লেখকরা পাঠক সংখ্যার ভিত্তিতে আয় করতে পারেন। বিস্তারিত জানতে Writer Studio দেখুন।'],contact:'ইমেইল: lekhoni-kahini@xyteee.com | আমরা ৪৮ ঘণ্টার মধ্যে উত্তর দিই।'},
+en:{title:'Lekhoni Kahini',subtitle:'Your gateway to Bengali literature & novels',termsT:'Terms of Service',privacyT:'Privacy Policy',contentT:'Content Policy',contactT:'Contact Us',terms:['Welcome to Lekhoni Kahini. By using this app, you agree to the following terms and conditions.','You must be at least 13 years old to use this app. By using Lekhoni Kahini, you accept these Terms of Service.','You retain ownership of stories you write. By publishing on our platform, you grant us a non-exclusive license to display, distribute, and promote your content.','You agree not to post harmful, abusive, plagiarized, or illegal content. We reserve the right to remove content that violates these terms.','We may suspend or terminate your account if you violate these terms. You may delete your account at any time from the app settings.'],privacy:['Your privacy is important to us. This policy explains what data we collect and how we use it.','We collect: your name/email (for account), reading history (for recommendations), device info (for app performance).','We use your data to provide and improve the app, personalize your experience, and communicate with you about updates.','We do not sell your personal data. We may share anonymized, aggregated data with analytics partners.','We implement industry-standard security measures to protect your personal information.','We may update this policy. Significant changes will be notified through the app.'],content:['Lekhoni Kahini is a platform for Bengali literature. We maintain content standards to ensure a safe experience for all users.','Authors retain full ownership of their original works. Plagiarism is strictly prohibited.','All published content is reviewed by our team. We reserve the right to remove content that violates our guidelines.','Users can report inappropriate content. We review reports within 24 hours.','Eligible writers may earn revenue based on readership. See Writer Studio for details.'],contact:'Email: lekhoni-kahini@xyteee.com | We respond to inquiries within 48 hours.'},
+hi:{title:'Lekhoni Kahini',subtitle:'बंगाली साहित्य और उपन्यासों का अनोखा मंच',termsT:'सेवा की शर्तें',privacyT:'गोपनीयता नीति',contentT:'सामग्री नीति',contactT:'संपर्क करें',terms:['लेखनी कहानी में आपका स्वागत है। इस ऐप का उपयोग करके आप निम्नलिखित शर्तों से सहमत होते हैं।','इस ऐप का उपयोग करने के लिए आपकी आयु कम से कम 13 वर्ष होनी चाहिए।','आप जो कहानियाँ लिखते हैं उनका स्वामित्व आपका ही रहता है।','आप हानिकारक, अपमानजनक, या गैरकानूनी सामग्री पोस्ट नहीं करेंगे।','शर्तों का उल्लंघन करने पर हम आपका खाता निलंबित कर सकते हैं।'],privacy:['आपकी गोपनीयता हमारे लिए महत्वपूर्ण है।','हम एकत्र करते हैं: आपका नाम/ईमेल, पढ़ने का इतिहास, डिवाइस जानकारी।','हम आपके डेटा का उपयोग ऐप प्रदान करने और बेहतर बनाने के लिए करते हैं।','हम आपका व्यक्तिगत डेटा नहीं बेचते।','हम आपकी व्यक्तिगत जानकारी की रक्षा के लिए सुरक्षा उपाय लागू करते हैं।','हम इस नीति को अपडेट कर सकते हैं।'],content:['लेखनी कहानी बंगाली साहित्य का मंच है।','लेखक अपने मूल कार्यों का पूर्ण स्वामित्व रखते हैं।','सभी प्रकाशित सामग्री की समीक्षा की जाती है।','उपयोगकर्ता अनुपयुक्त सामग्री की रिपोर्ट कर सकते हैं।','योग्य लेखक पाठकों के आधार पर कमा सकते हैं।'],contact:'ईमेल: lekhoni-kahini@xyteee.com | हम 48 घंटे में जवाब देते हैं।'}
+};
+let cur='bn';
+function setLang(l){
+cur=l;const d=D[l];
+document.getElementById('title').textContent=d.title;
+document.getElementById('subtitle').textContent=d.subtitle;
+document.getElementById('terms-title').textContent=d.termsT;
+document.getElementById('privacy-title').textContent=d.privacyT;
+document.getElementById('content-title').textContent=d.contentT;
+document.getElementById('contact-title').textContent=d.contactT;
+document.getElementById('terms-body').innerHTML=d.terms.map(s=>'<p>'+s+'</p>').join('');
+document.getElementById('privacy-body').innerHTML=d.privacy.map(s=>'<p>'+s+'</p>').join('');
+document.getElementById('content-body').innerHTML=d.content.map(s=>'<p>'+s+'</p>').join('');
+document.getElementById('contact-body').textContent=d.contact;
+document.querySelectorAll('.lang-btn').forEach(b=>{b.classList.toggle('active',b.textContent.trim()===(l==='bn'?'বাংলা':l==='en'?'English':'हिन्दी'))});
+}
+setLang('bn');
+</script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lekhoni Kahini - Delete My Data</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Hind Siliguri',sans-serif;background:#FAF7F2;color:#2b2b2b;line-height:1.7}
+.container{max-width:640px;margin:0 auto;padding:20px 16px 40px}
+.lang-bar{display:flex;gap:8px;justify-content:center;margin-bottom:20px}
+.lang-btn{padding:7px 20px;border-radius:9px;border:1px solid #C9972B;cursor:pointer;font-size:13px;font-weight:700;background:#fff;color:#7B1E2B}
+.lang-btn.active{background:#7B1E2B;color:#EAC97A;border-color:#7B1E2B}
+.hero{padding:28px 20px;background:linear-gradient(135deg,#7B1E2B,#4A1220);border-radius:16px;color:#fff;margin-bottom:20px;border:1px solid #C9972B55}
+.hero h1{font-size:22px}
+.hero p{font-size:14px;color:#ffffffDD;margin-top:6px}
+.card{background:#fff;border-radius:12px;padding:18px;margin-bottom:12px;border:1px solid #eee}
+.card h2{font-size:16px;color:#7B1E2B;margin-bottom:8px}
+.card p,.card li{font-size:14px;color:#444}
+.card ul{margin:6px 0 6px 20px}
+label{display:block;font-size:13px;font-weight:700;margin:12px 0 4px;color:#7B1E2B}
+input,textarea{width:100%;padding:10px 12px;border-radius:9px;border:1px solid #ddd;font-size:14px;font-family:inherit}
+textarea{min-height:90px;resize:vertical}
+button.submit{width:100%;margin-top:14px;padding:12px;border:none;border-radius:10px;background:#7B1E2B;color:#EAC97A;font-size:15px;font-weight:800;cursor:pointer}
+button.submit:disabled{opacity:.6}
+.msg{margin-top:12px;font-size:14px;font-weight:700;text-align:center}
+.msg.ok{color:#059669}.msg.err{color:#B91C1C}
+.footer{text-align:center;padding:16px 0;color:#999;font-size:12px}
+.footer a{color:#7B1E2B;font-weight:700;text-decoration:none}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="lang-bar">
+<button class="lang-btn active" id="btn-en" onclick="setLang('en')">English</button>
+<button class="lang-btn" id="btn-bn" onclick="setLang('bn')">বাংলা</button>
+</div>
+<div class="hero">
+<h1 id="t">Delete My Data</h1>
+<p id="i"></p>
+</div>
+<div class="card">
+<h2 id="h-opt">Your options (no login needed)</h2>
+<ul id="opts"></ul>
+</div>
+<div class="card">
+<h2 id="h-form">Deletion request form</h2>
+<p id="p-form"></p>
+<label id="l-contact" for="contact">Contact email</label>
+<input id="contact" type="email" placeholder="you@example.com" autocomplete="email">
+<label id="l-ident" for="ident">Account identifier</label>
+<input id="ident" type="text" placeholder="username / writer name">
+<label id="l-det" for="det">Details (optional)</label>
+<textarea id="det"></textarea>
+<button class="submit" id="btn" onclick="send()">Submit request</button>
+<p class="msg" id="msg"></p>
+</div>
+<div class="footer"><p>© 2026 Lekhoni Kahini · <a href="/privacy.html">Privacy Policy</a></p></div>
+</div>
+<script>
+const API = "https://lekhoni-admin-api.smdkawsar2.workers.dev";
+const T = {
+en: { t: "Delete My Data", i: "Ask us to delete your Lekhoni Kahini account and personal data. Requests are processed within 30 days and confirmed by email.",
+h: "Your options (no login needed)",
+o: ["<b>In the app:</b> Writers — Writer Studio → delete account (email-code confirmation). Readers — Settings → Delete server data, or Reset to clear the device.", "<b>On this page:</b> fill in the form below — no login required.", "<b>By email:</b> write to lekhoni-kahini@xyteee.com from your account email."],
+f: "Deletion request form", p: "Tell us which account to delete. We will confirm by email before deleting.",
+c: "Contact email", d: "Account identifier (username or writer name)", t2: "Details (optional)", b: "Submit request",
+ok: "Request received. We will confirm by email within 30 days.", err: "Failed. Please check your input and try again.", many: "Too many requests — try again later." },
+bn: { t: "আমার তথ্য মুছুন", i: "তোমার লেখনী কাহিনি অ্যাকাউন্ট ও ব্যক্তিগত তথ্য মোছার অনুরোধ করো। অনুরোধ ৩০ দিনের মধ্যে নিষ্পত্তি করে ইমেইলে জানানো হয়।",
+h: "তোমার পদ্ধতি (লগইন ছাড়াই)",
+o: ["<b>অ্যাপে:</b> লেখক — রাইটার স্টুডিও → অ্যাকাউন্ট মুছুন (ইমেইল-কোড নিশ্চিতকরণ)। পাঠক — সেটিংস → সার্ভার ডেটা মুছুন, বা রিসেটে ডিভাইস মুছুন।", "<b>এই পেজে:</b> নিচের ফর্ম পূরণ করো — লগইন লাগবে না।", "<b>ইমেইলে:</b> অ্যাকাউন্টের ইমেইল থেকে lekhoni-kahini@xyteee.com-এ লেখো।"],
+f: "মোছার অনুরোধ ফর্ম", p: "কোন অ্যাকাউন্ট মুছতে হবে জানাও। মোছার আগে ইমেইলে নিশ্চিত করা হবে।",
+c: "যোগাযোগের ইমেইল", d: "অ্যাকাউন্ট শনাক্তকারী (ইউজারনেম বা লেখক নাম)", t2: "বিস্তারিত (ঐচ্ছিক)", b: "অনুরোধ পাঠান",
+ok: "অনুরোধ পেয়েছি। ৩০ দিনের মধ্যে ইমেইলে নিশ্চিত করা হবে।", err: "ব্যর্থ। তথ্য দেখে আবার চেষ্টা করো।", many: "অনেকবার চেষ্টা হয়েছে — পরে চেষ্টা করো।" } };
+let L = "en";
+function setLang(l){ L = l; const d = T[l]; document.documentElement.lang = l;
+document.getElementById("t").textContent = d.t; document.getElementById("i").textContent = d.i;
+document.getElementById("h-opt").textContent = d.h; document.getElementById("opts").innerHTML = d.o.map(x => "<li>" + x + "</li>").join("");
+document.getElementById("h-form").textContent = d.f; document.getElementById("p-form").textContent = d.p;
+document.getElementById("l-contact").textContent = d.c; document.getElementById("l-ident").textContent = d.d;
+document.getElementById("l-det").textContent = d.t2; document.getElementById("btn").textContent = d.b;
+document.getElementById("btn-en").classList.toggle("active", l === "en");
+document.getElementById("btn-bn").classList.toggle("active", l === "bn"); }
+async function send(){ const m = document.getElementById("msg"); m.className = "msg"; m.textContent = "";
+const contact = document.getElementById("contact").value.trim();
+const identifier = document.getElementById("ident").value.trim();
+const details = document.getElementById("det").value.trim();
+if (!contact || !identifier) { m.classList.add("err"); m.textContent = T[L].err; return; }
+document.getElementById("btn").disabled = true;
+try { const r = await fetch(API + "/api/public/deletion-requests", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ contact, identifier, details }) });
+if (r.status === 429) { m.classList.add("err"); m.textContent = T[L].many; }
+else if (r.ok) { m.classList.add("ok"); m.textContent = T[L].ok; document.getElementById("contact").value = ""; document.getElementById("ident").value = ""; document.getElementById("det").value = ""; }
+else { m.classList.add("err"); m.textContent = T[L].err; } }
+catch { m.classList.add("err"); m.textContent = T[L].err; }
+document.getElementById("btn").disabled = false; }
+setLang("en");
+</script>
+</body>
+</html>
